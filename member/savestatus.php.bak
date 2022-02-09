@@ -1,0 +1,54 @@
+<?php
+error_reporting(0);
+include "../config/koneksi.php";
+session_start();
+//include "templ.php";
+include "menu.php";//742
+
+if ($_GET['act']=='save')
+{	
+	if (($_GET['stat']==0)OR($_GET['stat']==1)){
+		$tgl=Date("Y-m-d");
+		mysql_query("INSERT INTO peserta(iduser,thnsnma,statuspeserta,statusbayar) VALUES('$_SESSION[iduser]',$_SESSION[thnsnma],$_GET[stat],0)");
+		if ($_GET['stat']==0){
+			mysql_query("INSERT INTO makalah(iduser,thnsnma,judul,idkategori,author1,hadir1,author2,hadir2,author3,hadir3,author4,hadir4) VALUES('$_SESSION[iduser]',$_SESSION[thnsnma],'$_GET[jdl]',$_GET[idkat],'$_GET[auth1]',$_GET[had1],'$_GET[auth2]',$_GET[had2],'$_GET[auth3]',$_GET[had3],'$_GET[auth4]',$_GET[had4])");
+		}
+
+		echo "<center><font size=5>";
+		echo  "<br><table width='80%'><tr><td align='center'>Terima Kasih... </td></tr>
+		<tr><td  align='center'>Saudara/Saudari <font color=#800080><b>$_SESSION[namauser]</b></font> Silahkan melakukan pembayaran sesuai Tabel Konstribusi berikut : <br><br>";
+		echo  "<table width='80%' style='margin-left=0px;'>
+			<tr><td align='left'><img src='../icon/konstribusi.jpg'></td></tr>
+			<tr><td align=center><br>
+				<table border=1 bordercolor=#5F9ADC>
+					<tr><th style='background:#5F9ADC;' width='30%' align='center'>Keterangan</th><th style='background:#5F9ADC;' width='35%' align='center'>Pemakalah</th><th style='background:#5F9ADC;' width='35%' align='center'>Non Pemakalah</th></tr>
+					<tr>
+						<td style='padding-left:5px;padding-right:5px;'>Dosen dan Umum</td>
+						<td style='padding-left:5px;padding-right:5px;'>Rp. 500.000,-<br>Rp. 450.000,- (early bird)</td><td style='padding-left:5px;padding-right:5px;'>Rp. 300.000,-<br>Rp. 250.000,- (early bird)</td>
+					</tr>
+					<tr><td style='padding-left:5px;padding-right:5px;'>Mahasiswa S1</td><td style='padding-left:5px;padding-right:5px;'>Rp. 300.000,-</td><td style='padding-left:5px;padding-right:5px;'>Rp. 150.000,-</td></tr>
+					<tr><td style='padding-left:5px;padding-right:5px;'>Makalah ke-2 dst</td><td style='padding-left:5px;padding-right:5px;'>Rp. 250.000,-</td><td style='padding-left:5px;padding-right:5px;'></td></tr>
+				</table>
+				</td>
+			</tr>
+		</table>";		
+		echo  "Setelah melakukan pembayaran, silahkan Upload Bukti Pembayaran melalui menu <font color=#800000><b>Kepesertaan</b></font> yang muncul di sebalah kanan<br><br>
+		Terima kasih<br>
+		Salam<br><br>
+		Panitia</td></tr></table>";
+		echo  "</font><br><br>
+		<a href='./index.php' style='color:#D76B00;'><b>CLOSE</b></a></center>";
+	}else{
+		$utama = "
+		<center>
+			<font color=red size=4><b>
+			DATA TIDAK LENGKAP..!
+			</b></font>
+		</center>";
+		echo  "</font><br><br>
+		<a href='./index.php' style='color:#D76B00;'><b>CLOSE</b></a></center>";
+	}
+	
+}
+include "../config/closekoneksi.php";
+?>

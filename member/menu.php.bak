@@ -1,0 +1,83 @@
+<?php
+session_start(); 
+include "../config/koneksi.php";
+
+$cekpeserta=mysql_query("SELECT iduser,thnsnma,statuspeserta,statusbayar,tglbayar,filebayar FROM peserta WHERE iduser='$_SESSION[iduser]' AND thnsnma=$_SESSION[thnsnma]");
+$rcek=mysql_fetch_array($cekpeserta);
+$jlh=mysql_num_rows($cekpeserta);
+
+$mnu ="<font size='3' color='#FFFFFF'><b><a href='./index.php' style='color:#FFFFFF;'>HOME</a>&nbsp;&nbsp;&nbsp;&nbsp; <font color=#5300A6><b>|</b></font> &nbsp;&nbsp;&nbsp;&nbsp;<a class='moseover' href='javascript:void(0)' onclick=javascript:Request('konstribusi.php','','utama') style='color:#FFFFFF;' title='Biaya Pendaftaran'>CONTRIBUTION</a>&nbsp;&nbsp;&nbsp;&nbsp; <font color=#5300A6><b>|</b></font> &nbsp;&nbsp;&nbsp;&nbsp;<a class='moseover' href='javascript:void(0)' onclick=javascript:Request('makalah.php','','utama') style='color:#FFFFFF;' title='Bidang Seminar'>CALL FOR PAPER</a>&nbsp;&nbsp;&nbsp;&nbsp; <font color=#5300A6><b>|</b></font> &nbsp;&nbsp;&nbsp;&nbsp;<a class='moseover' href='javascript:void(0)' onclick=javascript:Request('pembicara.php','','utama') style='color:#FFFFFF;' title='Keynote Speaker'>KEYNOTE SPEAKER</a>&nbsp;&nbsp;&nbsp;&nbsp; <font color=#5300A6><b>|</b></font> &nbsp;&nbsp;&nbsp;&nbsp;<a class='moseover' href='javascript:void(0)' onclick=javascript:Request('jadual.php','','utama') style='color:#FFFFFF;' title='$nmbuku[nmkategori]'>IMPORTANT DATES</a>";
+// cellspacing='0' cellpadding='0'
+
+if ($_SESSION['level']==1){
+$login="<font color=#0000A0><b>$_SESSION[namauser]</b></font> (<font color=#FF9999><b>PESERTA</b></font>) <font color=#5300A6><b>|</b></font> <a href='./logout.php'><font color=red><b>LOG-OUT</b></font></a>";
+}else{
+$login="<font color=#0000A0><b>$_SESSION[namauser]</b></font> (<font color=#FF9999><b>PANITIA</b></font>) <font color=#5300A6><b>|</b></font> <a href='./logout.php'><font color=red><b>LOG-OUT</b></font></a>";
+}
+
+if ($_SESSION['level']==1){
+$kanan ="<table style='border-color:#ff00ff;' width='100%'>
+		<tr><td>
+		<font color=#5300A6 size=4><b>PESERTA</b></font><br>
+		<ul>";
+		$kanan .="<li><a class='moseover' href='javascript:void(0)' onclick=javascript:Request('datadiripeserta.php','','utama')  title='Pilih Kepesertaan'>Data Diri</a></li>";
+		if ((($rcek['statuspeserta']!=0) and($rcek['statuspeserta']!=1))or($jlh==0)){
+			$kanan .="<li><a class='moseover' href='javascript:void(0)' onclick=javascript:Request('cnt_user.php','','utama')  title='Pilih Kepesertaan'>Kepersertaan</a></li>";
+		}elseif ($rcek['statuspeserta']==0){
+			if ($rcek['statusbayar']==0){
+				$kanan .="<li><a class='moseover' href='javascript:void(0)' onclick=javascript:Request('uploadbuktibayar.php','','utama')  title='Pilih Kepesertaan'>Upload Bukti Bayar</a></li>";
+			}else{
+				$kanan .="<li> <font color=blue><b>Pembayaran <font color=red>TERBAYAR</font></b></font></li>";	
+			}
+			$kanan .="<li><a class='moseover' href='https://easychair.org/account/signin.cgi?key=51460794.K3uhSQ4eMQWMMAii'  title='Upload Abstrak dan Fullpaper' target='_blank'>Upload Abstrak & Fullpaper</a></li>";
+		}elseif ($rcek['statuspeserta']==1){
+			if ($rcek['statusbayar']==0){
+				$kanan .="<li><a class='moseover' href='javascript:void(0)' onclick=javascript:Request('uploadbuktibayar.php','','utama')  title='Pilih Kepesertaan'>Upload Bukti Bayar</a></li>";
+			}else{
+				$kanan .="<li> <font color=blue><b>Pembayaran <font color=red>TERBAYAR</font></b></font></li>";	
+			}
+		}
+	$kanan .="</ul>
+		</td></tr></table>
+		<br><br>";
+//		<li><a href='#'>Pemakalah</a></li>
+//		<li><a href='#'>Non-Pemakalah</a></li>
+}else{
+	$kanan ="<table style='border-color:#ff00ff;' width='100%'>
+		<tr><td>
+		<font color=#5300A6 size=4><b>PESERTA</b></font><br>
+		<ul>";
+	$kanan .="<li><a class='moseover' href='javascript:void(0)' onclick=javascript:Request('ent_user.php',0,'utama')  title='Pilih Kepesertaan'>Pemakalah</a></li>";
+	$kanan .="<li><a class='moseover' href='javascript:void(0)' onclick=javascript:Request('ent_user.php',1,'utama')  title='Pilih Kepesertaan'>Non Pemakalah</a></li>";
+	$kanan .="</ul>
+		</td></tr></table>
+		<br><br>";
+}
+
+$kanan .="<table style='border-color:#ff00ff;' width='100%'>
+		<tr><td>
+		<font color=#5300A6 size=4><b>Download</b></font><br>
+		<ul>
+		<li><a href='../images/brosur_snma2017_fst_unair.zip'>Poster</a></li>
+		<li><a href='../berkas/Template_abstrak_SNMA2017.docx'>Format Abstrak</a></li>
+		<li><a href='../berkas/Template_fullpaperSNMA2017.docx'>Format Fullpaper</a></li>
+		</ul>
+		</td></tr></table>
+		<br><br>";
+
+$kanan .="<font color=#5300A6 size=4><b>Kesekretariatan</b></font><br>
+		Departemen Matematika<br>
+		Fakultas Sains dan Teknologi<br>
+		Universitas Airlangga<br>
+		Kampus C, Jl. Mulyorejo Surabaya<br>(60115)<br>
+		Telp. (031) 5936501, 5936502<br>
+		Fax. (031)5936502<br>
+		Email : <a href='mailto:snma@fst.unair.ac.id'>snma@fst.unair.ac.id</a><br><br>";
+
+$kanan .="<font color=#5300A6 size=4><b>Kontak Person</b></font><br>
+		<font color=#800000><b>Purbandini, 085230045971</b></font><br>
+		<font color=#2020FF><b><i>(WA, Line, SMS, Telpon)</i></b></font><br><br>
+		<font color=#800000><b>Marisa, 085648266260</b></font><br>
+		<font color=#2020FF><b><i>(WA, Line, SMS, Telpon)</i></b></font><br><br>";
+
+?>

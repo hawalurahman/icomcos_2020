@@ -1,0 +1,453 @@
+<?php
+	include "awal.php"; 
+?>
+<html>
+<meta name="description" content="International Conference Mathematics, Computation and Statistics 2020">
+<meta name="keywords" content="ICOMCOS, ICOMCOS2020, ICOMCOS UNAIR, ICOMCOS UNAIR 2020, ICOMCOS2020 UNAIR">
+<?php
+	function path($end){
+	 $url=$_SERVER['PHP_SELF'];
+	 $dir=explode("/",$url);
+	 $enddir=end($dir);
+	 $result=str_replace("$enddir","",$url);
+	 echo "http://".$_SERVER['HTTP_HOST'].$result.$end;
+	}
+?>
+<script type="text/javascript">
+var flagx=1;
+setInterval(function(){ ganti() }, 5000);
+function ganti(){
+	document.getElementById("head1").style.display = "none";
+	document.getElementById("head2").style.display = "none";
+	document.getElementById("head3").style.display = "none";
+	document.getElementById("head4").style.display = "none";
+	document.getElementById("head5").style.display = "none";
+	document.getElementById("head6").style.display = "none";
+	document.getElementById("head7").style.display = "none";
+	document.getElementById("head8").style.display = "none";
+	if(flagx==1){
+		document.getElementById("head1").style.display = "block";
+/*		document.getElementById("head2").style.display = "block";
+		document.getElementById("head3").style.display = "block";
+		document.getElementById("head4").style.display = "block";
+		document.getElementById("head5").style.display = "block";
+		document.getElementById("head6").style.display = "block";
+		document.getElementById("head7").style.display = "block";
+		document.getElementById("head8").style.display = "block";*/
+		flagx++;
+	}else if(flagx==2){
+		document.getElementById("head2").style.display = "block";
+/*		document.getElementById("head1").style.display = "block";
+		document.getElementById("head3").style.display = "block";
+		document.getElementById("head4").style.display = "block";
+		document.getElementById("head5").style.display = "block";
+		document.getElementById("head6").style.display = "block";
+		document.getElementById("head7").style.display = "block";
+		document.getElementById("head8").style.display = "block";*/
+		flagx=++;
+	}else if(flagx==3){
+		document.getElementById("head3").style.display = "block";
+/*		document.getElementById("head1").style.display = "block";
+		document.getElementById("head2").style.display = "block";
+		document.getElementById("head4").style.display = "block";
+		document.getElementById("head5").style.display = "block";
+		document.getElementById("head6").style.display = "block";
+		document.getElementById("head7").style.display = "block";
+		document.getElementById("head8").style.display = "block";*/
+		flagx=++;
+	}else if(flagx==4){
+		document.getElementById("head4").style.display = "block";
+/*		document.getElementById("head1").style.display = "block";
+		document.getElementById("head2").style.display = "block";
+		document.getElementById("head3").style.display = "block";
+		document.getElementById("head5").style.display = "block";
+		document.getElementById("head6").style.display = "block";
+		document.getElementById("head7").style.display = "block";
+		document.getElementById("head8").style.display = "block";*/
+		flagx=++;
+	}else if(flagx==5){
+		document.getElementById("head5").style.display = "block";
+/*		document.getElementById("head1").style.display = "block";
+		document.getElementById("head2").style.display = "block";
+		document.getElementById("head3").style.display = "block";
+		document.getElementById("head4").style.display = "block";
+		document.getElementById("head6").style.display = "block";
+		document.getElementById("head7").style.display = "block";
+		document.getElementById("head8").style.display = "block";*/
+		flagx=++;
+	}else if(flagx==6){
+		document.getElementById("head6").style.display = "block";
+/*		document.getElementById("head1").style.display = "block";
+		document.getElementById("head2").style.display = "block";
+		document.getElementById("head3").style.display = "block";
+		document.getElementById("head4").style.display = "block";
+		document.getElementById("head5").style.display = "block";
+		document.getElementById("head7").style.display = "block";
+		document.getElementById("head8").style.display = "block";*/
+		flagx=++;
+	}else if(flagx==7){
+		document.getElementById("head7").style.display = "block";
+/*		document.getElementById("head1").style.display = "block";
+		document.getElementById("head2").style.display = "block";
+		document.getElementById("head3").style.display = "block";
+		document.getElementById("head4").style.display = "block";
+		document.getElementById("head5").style.display = "block";
+		document.getElementById("head6").style.display = "block";
+		document.getElementById("head8").style.display = "block";*/
+		flagx=++;
+	}else if(flagx==8){
+		document.getElementById("head8").style.display = "block";
+/*		document.getElementById("head1").style.display = "block";
+		document.getElementById("head2").style.display = "block";
+		document.getElementById("head3").style.display = "block";
+		document.getElementById("head4").style.display = "block";
+		document.getElementById("head5").style.display = "block";
+		document.getElementById("head6").style.display = "block";
+		document.getElementById("head7").style.display = "block";*/
+		flagx=1;
+	}
+}
+
+function validAngka(a)
+{
+	if(!/^[0-9.]+$/.test(a.value))
+	{
+	a.value = a.value.substring(0,a.value.length-1000);
+	}
+}
+
+function validasiEmail(isian){
+  pola_email=/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  if (!pola_email.test(isian.value)){
+    alert ('Penulisan Email tidak benar');
+//    isian.focus();
+	document.getElementById('email').focus();
+	document.getElementById("email").style.border = "2px solid #F71F06";
+	return false;
+  }
+  document.getElementById("email").style.border = "2px solid #AEAEFF";
+  return (true);
+}
+
+function besar(id){
+var val=document.getElementById(id).value;
+document.getElementById(id).value=val.toUpperCase();
+}
+
+function setonoff(str){
+	vstr=document.getElementById(str).style.display;
+	if (vstr=='none'){
+		document.getElementById('aa').style.display = "none";
+		document.getElementById('mt').style.display = "none";
+		document.getElementById('st').style.display = "none";
+		document.getElementById('si').style.display = "none";
+		document.getElementById('pm').style.display = "none";
+		document.getElementById(str).style.display = "block";
+	}else{
+		document.getElementById(str).style.display = "none";
+	}
+}
+
+function setonpes(str){
+	if (str==1){
+	document.getElementById("nohal1").style.display = "block";
+	document.getElementById("nohal2").style.display = "none";
+	document.getElementById("nohal3").style.display = "none";
+	document.getElementById("nohal4").style.display = "none";
+	document.getElementById("nohal5").style.display = "none";
+	document.getElementById("nohal6").style.display = "none";
+	document.getElementById("nohal7").style.display = "none";
+	document.getElementById("nohal8").style.display = "none";
+	}
+	if (str==2){
+	document.getElementById("nohal1").style.display = "block";
+	document.getElementById("nohal2").style.display = "block";
+	document.getElementById("nohal3").style.display = "none";
+	document.getElementById("nohal4").style.display = "none";
+	document.getElementById("nohal5").style.display = "none";
+	document.getElementById("nohal6").style.display = "none";
+	document.getElementById("nohal7").style.display = "none";
+	document.getElementById("nohal8").style.display = "none";
+	}
+	if (str==3){
+	document.getElementById("nohal1").style.display = "block";
+	document.getElementById("nohal2").style.display = "block";
+	document.getElementById("nohal3").style.display = "block";
+	document.getElementById("nohal4").style.display = "none";
+	document.getElementById("nohal5").style.display = "none";
+	document.getElementById("nohal6").style.display = "none";
+	document.getElementById("nohal7").style.display = "none";
+	document.getElementById("nohal8").style.display = "none";
+	}
+	if (str==4){
+	document.getElementById("nohal1").style.display = "block";
+	document.getElementById("nohal2").style.display = "block";
+	document.getElementById("nohal3").style.display = "block";
+	document.getElementById("nohal4").style.display = "block";
+	document.getElementById("nohal5").style.display = "none";
+	document.getElementById("nohal6").style.display = "none";
+	document.getElementById("nohal7").style.display = "none";
+	document.getElementById("nohal8").style.display = "none";
+	}
+	if (str==5){
+	document.getElementById("nohal1").style.display = "block";
+	document.getElementById("nohal2").style.display = "block";
+	document.getElementById("nohal3").style.display = "block";
+	document.getElementById("nohal4").style.display = "block";
+	document.getElementById("nohal5").style.display = "block";
+	document.getElementById("nohal6").style.display = "none";
+	document.getElementById("nohal7").style.display = "none";
+	document.getElementById("nohal8").style.display = "none";
+	}
+	if (str==6){
+	document.getElementById("nohal1").style.display = "block";
+	document.getElementById("nohal2").style.display = "block";
+	document.getElementById("nohal3").style.display = "block";
+	document.getElementById("nohal4").style.display = "block";
+	document.getElementById("nohal5").style.display = "block";
+	document.getElementById("nohal6").style.display = "block";
+	document.getElementById("nohal7").style.display = "none";
+	document.getElementById("nohal8").style.display = "none";
+	}
+	if (str==7){
+	document.getElementById("nohal1").style.display = "block";
+	document.getElementById("nohal2").style.display = "block";
+	document.getElementById("nohal3").style.display = "block";
+	document.getElementById("nohal4").style.display = "block";
+	document.getElementById("nohal5").style.display = "block";
+	document.getElementById("nohal6").style.display = "block";
+	document.getElementById("nohal7").style.display = "block";
+	document.getElementById("nohal8").style.display = "none";
+	}
+	if (str==8){
+	document.getElementById("nohal1").style.display = "block";
+	document.getElementById("nohal2").style.display = "block";
+	document.getElementById("nohal3").style.display = "block";
+	document.getElementById("nohal4").style.display = "block";
+	document.getElementById("nohal5").style.display = "block";
+	document.getElementById("nohal6").style.display = "block";
+	document.getElementById("nohal7").style.display = "block";
+	document.getElementById("nohal8").style.display = "block";
+	}
+}
+
+function validasi() {
+var nama = document.form.username.value;
+var email = document.form.password.value;
+var text = document.form.kode.value;
+var valid = true;
+ 
+if (username == '') {
+alert("User-Id tidak boleh kosong.!!!");
+valid = false;
+} else if (password == '') {
+alert("Password tidak boleh kosong.!!!");
+valid = false;
+} else if(kode == '') {
+alert("Kode Verifikasi tidak boleh kosong.!!!");
+valid = false;
+}
+return valid;
+}
+</script>
+<!-- TinyMCE -->
+<script type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+	tinyMCE.init({
+		mode : "textareas",
+		theme : "advanced",
+		plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+		// Theme options
+		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,fontselect,fontsizeselect,|,code",
+		theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,|,tablecontrols,|,styleselect",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		theme_advanced_statusbar_location : "bottom",
+		theme_advanced_resizing : true
+
+	}
+);
+</script>
+<!-- /TinyMCE -->
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <meta name="generator" content="DFMA" />
+	    <title>ICOMCOS 2020 : International Conference Mathematic, Computation Sciences and Statistics 2020</title>
+	    <link href="./config/style.css" rel="stylesheet" type="text/css" />
+	    <link rel="stylesheet" href="config/style.css" type="text/css" media="screen" />
+	    <link rel="shortcut icon" href="./images/SoftInSys.ico" type="image/x-icon" title="e-PaperMath">
+		<script src="./ajax.js"></script>
+    </head>
+    
+    <body style='font-family:arial;'>
+		<center>
+		<!--border-bottom:3px #C0C0C0;-->
+<!--
+			<table width="80%" align="center"  cellspacing=0 cellspadding=0>
+			<tr><td align='left' valign='middle' width='100%' height="20"  style='top-margin:0px;padding-top:0px;padding-left:5px;padding-right:5px;background:#F4FBFF;border-right-style:none' colspan=2><marquee><font color=#FF0000 size=2><b>SEMINAR <font color=#000080 size=2>NASIONAL <font color=#FF8040 size=2>MATEMATIKA</font></font> dan <font color=#006633 size=2>APLIKASINYA</font></b></font></marquee></td></tr>
+			</table>-->
+			<table width="100%">
+				<tr>
+					<td align="left" width="5%"  style='padding-top:10px;padding-bottom:10px;'>
+						<img src="./icon/logo_icomcos20_a.png" width="90" height="60"/>
+					</td>
+					<td align="left" style='top-margin:0px;padding-left:0px;background:#FFFFFF;'  width="10%">
+						<img src="./icon/icomcos2020_br.png" width="150" height="60"/>
+					</td>
+					<td align="center" width="55%">
+						<font size=4 color=#800000><b><font size=5>I</font>nternational <font size=5>C</font>onference on <font size=5>M</font>athematics, <font size=5>C</font>omputer <font size=5>S</font>ciences and <font size=5>S</font>tatistics 2020</b></font><br>
+					</td>
+<!--
+					<td align="center" width="50%">
+						<font size=2 color=#800000><b>INTERNATIONAL CONFERENCE on MATHEMATICS, COMPUTER SCIENCES AND STATISTICS 2020</b></font><br><font size=2 color=#6700CE><b><i>Faculty of Science and Technology</i></b></font><br><font size=2 color=#400080><b>AIRLANGGA UNIVERSITY -  SURABAYA</b></font>
+					</td>
+-->
+					<td align="right" style='padding-top:0px;padding-bottom:0px;background:#FFFFFF;' width="25%">
+						<a href=''><b>Author Search</b></a>&nbsp;&nbsp;<font color=#FFCC33><b> | </b></font>&nbsp;&nbsp;<a href="javascript:Request('daftar.php','','utama')"><b>Create Account</b></a>&nbsp;&nbsp;&nbsp;<font color=#FFCC33><b> | </b></font>&nbsp;&nbsp;<a href=''><b>Sign-in</b></a>&nbsp;&nbsp;&nbsp;
+					</td>
+
+				</tr>
+			</table>
+			<table width="100%" style='padding:0px;margin:0px;' cellspacing='0' cellspadding='0'>
+				<tr>
+					<td align="center" style='padding-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px;background:#5300A6;' width='100%'>
+						<div id='head1' style="display:block">
+						<table width='80%'>
+								<tr>
+									<td style='padding-top:5px;padding-bottom:5px;' align='center' width='100%'>
+										<img src='./images/bromo_01.jpg' width=1400 height=230>
+									</td>
+								</tr>
+						</table>
+						</div>
+						<div id='head2' style="display:none">
+						<table width='80%'>
+								<tr>
+									<td style='padding-top:5px;padding-bottom:5px;' align='center' width='100%'>
+										<img src='./images/bromo_02.jpg' width=1400 height=230>
+									</td>
+								</tr>
+						</table>
+						</div>
+						<div id='head3' style="display:none">
+						<table width='80%'>
+								<tr>
+									<td style='padding-top:5px;padding-bottom:5px;' align='center' width='100%'>
+										<img src='./images/bromo_03.jpg' width=1400 height=230>
+									</td>
+								</tr>
+						</table>
+						</div>
+						<div id='head4' style="display:none">
+						<table width='80%'>
+								<tr>
+									<td style='padding-top:5px;padding-bottom:5px;' align='center' width='100%'>
+										<img src='./images/bromo_04.jpg' width=1400 height=230>
+									</td>
+								</tr>
+						</table>
+						</div>
+						<div id='head5' style="display:none">
+						<table width='80%'>
+								<tr>
+									<td style='padding-top:5px;padding-bottom:5px;' align='center' width='100%'>
+										<img src='./images/bromo_05.jpg' width=1400 height=230>
+									</td>
+								</tr>
+						</table>
+						</div>
+
+					</td>
+				</tr>
+			</table>
+
+			<table width="100%" style='padding:0px;margin:0px;' cellspacing='0' cellspadding='0'><tr><td align="center" width="50%" height="30" style='top-margin:0px;background:#FF8000;border:0;'>
+			<div>
+				{mnu}
+			</div>
+			</td></tr></table>
+			<table width="100%" style='padding:0px;margin:0px;' cellspacing='0' cellspadding='0'><tr><td align="center" width="50%" height="30" style='top-margin:0px;background:#FCF9FF;border:0;'>
+			<div>
+				<marquee><a href='http://math.fst.unair.ac.id/prosiding' target='_blank'><font color=blue size=3><b>29 September 2020</b></font></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://math.fst.unair.ac.id/prosiding' target='_blank'><font color=red size=3><b>29 September 2020</b></font></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://math.fst.unair.ac.id/prosiding' target='_blank'><font color=green size=3><b>29 September 2020</b></font></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://math.fst.unair.ac.id/prosiding' target='_blank'><font color=yellow size=3><b>29 September 2020</b></font></a>
+				</marquee>
+			</div>
+			</td></tr></table>
+
+<!--#daa520-->
+			<table width="80%" align="center"><tr><td><br><br></td></tr></table>
+
+			<table border=0 cellspacing="0" width="100%">
+				<tr>
+					<td valign="top" align='left' width="70%">
+						<div id=utama>
+							{utama}
+						</div>
+					</td>
+					<td valign="top" align='left' width="30%">
+						<div id=kanan>								
+							{kanan}
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2 valign="top" align='center' width="100%">
+					<center>
+						<hr width='70%' size='3' align='center' color='#800000'><br>
+					</center>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2 valign="top" align='center' width="100%">
+					<center>
+						<font size=5 color='#400000'><b>Keynote Speaker</b></font><br>
+						<hr width='70' size='3' align='center' color='#FFCC33'><br>
+						<table width='500'>
+							<tr>
+							<td valign="top" align='left' width='33%' style='margin-right:20px;'>
+							<center>
+								<img src='./images/Martin_Bees.jpg' width='150' height='200'><br>
+								<font color='#804000'><b>Prof. Martin Bees</b></font><br>
+								<a href='' title='Detail'><b>Detail...</b></a>
+							</center>
+							</td>
+							<td valign="top" align='center' width='33%' style='margin-right:20px;'>
+							<center>
+								<img src='./images/Havard.jpg' width='150' height='200'><br>
+								<font color='#804000'><b>Prof. Havard</b></font><br>
+								<a href='' title='Detail'><b>Detail...</b></a>
+							</center>
+							</td>
+							<td valign="top" align='right' width='33%' style='margin-left:20px;'>
+							<center>
+								<img src='./images/sawano.jpg' width='150' height='200'><br>
+								<font color='#804000'><b>Prof. Yoshihiro Sawano</b></font><br>
+								<a href='' title='Detail'><b>Detail...</b></a>
+							</center>
+							</td>
+
+							</tr>
+						</table>
+					</center><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2 valign="top" align='center' width="100%">
+					<center>
+						<br><br>
+						<hr width='70%' size='3' align='center' color='#800000'><br>
+					</center>
+					</td>
+				</tr>				
+				<tr>
+					<td  colspan=2 align="center"><br><br>
+					  <font size="2" color="blue">CopyRight&copy <?print(date('Y'))?> <font size='2' color='#1e90ff'><b>MATH-FST-UNAIR</b></font><br>Powered By <a href="http://www.math.unair.ac.id">Edwin</a></font><br>
+					  <font size=2 color=blue><a href="#">Privacy</a> | <a href="#">Mobile</a> | <a href="mailto:snma@fst.unair.ac.id">Contact Us</a></font><br><br>
+					</td>
+				</tr>
+			</table>
+		</center>
+    </body>
+</html>

@@ -1,0 +1,126 @@
+#box{
+width: 100%;/* 960px;*/
+margin: auto;
+padding:0px;
+}
+
+#header_top{
+margin: 0 auto;
+width: 100%;/*960px;*/
+height: 35px;
+background-color: #0000B0;
+}
+
+#in_header_top{
+margin-right: 5 auto;
+width: 98%;/*960px;*/
+height: 30px;
+background-color: #0000B0;
+}
+
+
+#header{
+margin: 0 auto;
+width: 100%;/*960px;*/
+height: 100px;
+background-color: #FFFFFF;
+}
+
+#header_bott{
+margin: 0 auto;
+width: 100%;/*960px;*/
+height: 40px;
+background-color: #FFCC33;
+}
+
+#judul_top{
+font-size: 18px;
+text-align: right;
+font-weight: bold;
+text-transform: uppercase;
+vertical-align: middle;
+position : relative;
+top:5px;
+color: #FFFFFF;
+}
+#judul{
+margin:0 auto;
+vertical-align: middle;
+padding-top:15px;
+color: #f4fd05;
+background-position: left top;
+background-image:url('../images/ua-logo.png') no-repeat fixed middle center;
+}
+#judul_bott{
+font-size: 20px;
+text-align: center;
+vertical-align: middle;
+position : relative;
+color: #FFFFFF;
+}
+
+
+#container{
+margin: 5px auto;
+width: 100%;/*960px;*/
+background-color: #ffffff;
+}
+
+#kiri_header{
+float: center;
+font-size: 20px;
+text-align: center;
+vertical-align: middle;
+color:#ffffff;
+width: 100%;/*670px;*/
+margin :0px;
+height: 30px;
+padding-top:5px;
+background-color: #0000B0;
+}
+
+#kiri{
+float: left;
+width: 70%;/*670px;*/
+margin :10px;
+padding:0 10px;
+background-color: #ffffff;
+}
+
+#kanan_header{
+float: center;
+font-size: 20px;
+text-align: center;
+vertical-align: middle;
+color:blue;
+width: 100%;/*250px;*/
+margin :0px;
+height: 30px;
+padding-top:5px;
+background-color: #FFCC33;
+}
+
+#kanan{
+float: right;
+width: 25%;/*250px;*/
+margin :10px;
+height: 500px;
+background-color: #ffffff;
+}
+
+#footer{
+margin: 0 auto;
+width: 960px;
+line-height: 50px;
+background-color: #510f55;
+}
+
+#copyright{
+text-align: center;
+color:#ffffff;
+}
+
+.clear
+{
+clear: both;
+}

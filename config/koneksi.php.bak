@@ -1,0 +1,10 @@
+<?
+$server = "localhost";
+$username = "root";
+$password = "";
+$database = "aup_unair";
+//$database = "mypoos";
+// Koneksi dan memilih database di server
+$dbconnect=mysql_connect($server,$username,$password) or die("Koneksi gagal");
+mysql_select_db($database) or die("Database tidak bisa dibuka");
+?>

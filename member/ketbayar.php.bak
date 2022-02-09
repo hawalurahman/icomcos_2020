@@ -1,0 +1,74 @@
+<?php
+error_reporting(0);
+session_start();
+include "../config/koneksi.php";
+		$iduser=$_GET['id'];
+		$iddiv=$_GET['iddiv'];
+		$jlpeserta = mysql_num_rows(mysql_query("SELECT a.iduser,a.thnsnma FROM peserta a WHERE a.thnsnma=$_SESSION[thnsnma] and a.iduser='$iduser'"));
+
+		$editjo = mysql_query("SELECT a.iduser,a.nmuser,a.instansi,a.hp,a.idoto,a.passworda,a.passworde,a.status,a.tgldaftar,b.statuspeserta,b.statusbayar,b.tglbayar,b.filebayar,b.ketbayar FROM (user a left join peserta b on a.iduser=b.iduser) WHERE b.thnsnma=$_SESSION[thnsnma] and b.iduser='$iduser'");
+		$rs=mysql_fetch_array($editjo);
+		echo "<fieldset width='80%'><legend align='left' style='background:#FFFFFF;border:none'><img src='../icon/downarrow-1.png'> <font color='#FF8000' size=2><b>Data Pribadi</b></font> <font color='blue'>[<a class='moseover' href='javascript:void(0)' onclick=javascript:Request('kosong.php','','$iddiv') ><font color='red' size=2><b>Close</b></font></a>]</font></legend>";	
+		echo "<br>";
+		if ($jlpeserta>0){
+			echo "<center><table>";
+			echo "<tr><td> Tahun </td><td> : </td><td> <font color=#5E5EFF><b>$_SESSION[thnsnma]</b></font></td></tr>";
+			echo "<tr><td> Nama </td><td> : </td><td> <font color=#5E5EFF><b>$rs[nmuser]</b></font></td></tr>";
+			echo "<tr><td> Email </td><td> : </td><td> <font color=#5E5EFF><b>$rs[iduser]</b></font></td></tr>";
+			if ($rs['statuspeserta']==0){
+				$peserta="Pemakalah";
+			}elseif ($rs['statuspeserta']==1){{
+				$peserta="Non-Pemakalah";
+			}else{
+				$peserta="Belum memilih";
+			}
+			echo "<tr><td> Status Peserta </td><td> : </td><td> <font color=#5E5EFF><b>$peserta</b></font></td></tr>";
+			if ($rs['statusbayar']==0){
+				$bayar="<font color=red><b>Belum Bayar</b></font>";
+			}else{
+				$bayar="<font color=green><b>Sudah Bayar</b></font>";
+			}
+			echo "<tr><td> Status Bayar </td><td> : </td><td> <font color=#5E5EFF><b>$bayar</b></font></td></tr>";
+			if ($rs['statuspeserta']==0){
+				$stpeserta = mysql_fetch_array(mysql_query("SELECT a.iduser,a.thnsnma,a.judul,a.idkategori,a.keyword,a.author1,a.hadir1,a.author2,a.hadir2,a.author3,a.hadir3,a.author4,a.hadir4,b.nmkategori FROM (makalah a left join kategori b on a.idkategori=b.idkategori) WHERE a.thnsnma=$_SESSION[thnsnma] and a.iduser='$iduser'"));
+				echo "<tr><td> Judul </td><td> : </td><td> <textare cols=60 rows=5><font color=#5E5EFF><b>$stpeserta[judul]</b></font></textarea></td></tr>";
+				echo "<tr><td> Keyword </td><td> : </td><td> <font color=#5E5EFF><b>$stpeserta[keyword]</b></font></td></tr>";
+				echo "<tr><td> Kategori </td><td> : </td><td> <font color=#5E5EFF><b>$stpeserta[nmkategori]</b></font></td></tr>";
+				echo "<tr><td colspan=3 align=center><br> <font color=#FF8040 size=4><b>A U T H O R</b></font></td></tr>";
+				if (!empty($stpeserta[author1])){
+				if ($stpeserta[hadir1]==1){
+					$hadir='Hadir';
+				}else{
+					$hadir='';
+				}
+				echo "<tr><td> Penulis 1 </td><td> : </td><td> <font color=#5E5EFF><b>$stpeserta[author1]</b></font> (<font color=red><b>$hadir</b></font>)</td></tr>";
+				}
+				if (!empty($stpeserta[author2])){
+				if ($stpeserta[hadir2]==1){
+					$hadir2='Hadir';
+				}else{
+					$hadir2='';
+				}
+				echo "<tr><td> Penulis 2 </td><td> : </td><td> <font color=#5E5EFF><b>$stpeserta[author2]</b></font> (<font color=red><b>$hadir2</b></font>)</td></tr>";
+				}
+				if (!empty($stpeserta[author3])){
+				if ($stpeserta[hadir3]==1){
+					$hadir3='Hadir';
+				}else{
+					$hadir3='';
+				}
+				echo "<tr><td> Penulis 3 </td><td> : </td><td> <font color=#5E5EFF><b>$stpeserta[author3]</b></font> (<font color=red><b>$hadir3</b></font>)</td></tr>";
+				}		
+				if (!empty($stpeserta[author4])){
+				if ($stpeserta[hadir4]==1){
+					$hadir4='Hadir';
+				}else{
+					$hadir4='';
+				}
+				echo "<tr><td> Penulis 4 </td><td> : </td><td> <font color=#5E5EFF><b>$stpeserta[author4]</b></font> (<font color=red><b>$hadir4</b></font>)</td></tr>";
+				}
+			}
+			echo "</table></center>";
+		}
+include "../config/closekoneksi.php";
+?>

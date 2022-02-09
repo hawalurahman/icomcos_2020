@@ -1,0 +1,11 @@
+<?php
+error_reporting(0);
+session_start();
+include "../config/koneksi.php";
+	$iduser=$_GET['id'];
+	mysql_query("UPDATE peserta SET statusbayar=1 WHERE iduser='$iduser' and thnsnma=$_SESSION[thnsnma]");
+	echo "<select name='statbayar'>";
+	echo " 	<option id='statbayar' value=1 selected> Bayar </option>";
+	echo "</select>";
+include "../config/closekoneksi.php";
+?>
